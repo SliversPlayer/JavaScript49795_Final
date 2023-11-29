@@ -22,9 +22,7 @@
 // de la TC con la que se hace el pago.
 
 // Identificación de la rendición
-let nombre;
-let id;
-let fecha;
+
 let tipoRendicion = 0;
 let numTarjeta = 0;
 let porRendir = 0;
@@ -43,30 +41,40 @@ let totalMonto = 0;
 
 //
 
-function funcTipo(nombreRendicion) {
-    switch (nombreRendicion) {
+function funcTipo(tipoRendicion) {
+    switch (tipoRendicion) {
         case 1:
-            nombreRendicion = `Fondo Fijo`;
+            return `Fondo Fijo`;
             break;
         case 2:
-            nombreRendicion = `Fondo por Rendir`;
+            return `Fondo por Rendir`;
             break;
         case 3:
-            nombreRendicion = `Tarjeta de Crédito`;
+            return `Tarjeta de Crédito`;
             break;
+        default:
+            return "Tipo incorrecto"
     }
-    return nombreRendicion;
 }
-
+/*
 nombre = `Juan Perez`;
 id = 1234567;
 fecha = `Febrero`;
-
-/*
-nombre = prompt(`Ingrese nombre del empleado`);
-id = prompt(`Ingrese su ID`);
-fecha = prompt(`Ingrese mes correspondiente a la rendición`);
 */
+
+function getId() {
+    let nombre;
+    let id;
+    let fecha;
+    nombre = prompt(`Ingrese nombre del empleado`);
+    id = prompt(`Ingrese su ID`);
+    fecha = prompt(`Ingrese mes correspondiente a la rendición`);
+
+    return [nombre, id, fecha];
+    
+}
+
+const [nombre, id, fecha] = getId();
 
 do {
     tipoRendicion = +prompt(`Indique el tipo de rendición (Ingrese el número)\n\n1.Fondo fijo\n2.Fondo por rendir\n3.Tarjeta de crédito`);
@@ -85,34 +93,44 @@ do {
             }
     } while (tipoRendicion > 3 || tipoRendicion < 1)
 
-alert(`Empleado: ${nombre}\nid: ${id}\nFecha Rendición: ${fecha}\nTipo Rendición: ${funcTipo(tipoRendicion)}`)
+alert(`Empleado: ${nombre}\nid: ${id}\nFecha Rendición: ${fecha}\nTipo Rendición: ${funcTipo(tipoRendicion)}`);
 
-do {
-    fechaRendicion = prompt(`Ingrese fecha DD-MM-YY`);
-    glosaRendicion = prompt(`Ingrese descripción breve de la rendición`);
-    tipoDoc = parseInt(prompt(`Boleta o Factura\n\n1.Boleta\n2.Factura`));
-    centroCosto = prompt(`Ingrese el centro de costo según corresponda`);
-    monto = parseFloat(prompt(`Monto a rendir`));
+// Constructor para representar una rendición
+function Rendicion(fecha, glosa, tipoDoc, centroCosto, monto) {
+    this.fecha = fecha;
+    this.glosa = glosa;
+    this.tipoDoc = tipoDoc;
+    this.centroCosto = centroCosto;
+    this.monto = monto;
+}
 
-    rendicion.push(fechaRendicion);
-    rendicion.push(glosaRendicion);
-    rendicion.push(tipoDoc);
-    rendicion.push(centroCosto);        
-    rendicion.push(monto);
 
-    totalMonto += monto;
+function obtenerDatosRendicion() {
 
-    alert(`Fecha Rendición: ${fechaRendicion}\nDescripción: ${glosaRendicion}\nTipo Documento: ${tipoDoc}\nCentro de costo: ${centroCosto}\nMonto: ${monto}\nMonto Total: ${totalMonto.toFixed(0)}`)
+    do {
+        const fechaRendicion = prompt(`Ingrese fecha DD-MM-YY`);
+        const glosaRendicion = prompt(`Ingrese descripción breve de la rendición`);
+        const tipoDoc = parseInt(prompt(`Boleta o Factura\n\n1.Boleta\n2.Factura`));
+        const centroCosto = prompt(`Ingrese el centro de costo según corresponda`);
+        const monto = parseFloat(prompt(`Monto a rendir`));
 
-    
-    continuarRendicion = prompt('¿Desea ingresar otra rendición? si/no');
-    if (continuarRendicion == "no") {
-        console.log('Datos concatenados:', rendicion);
-        break;
+        const nuevaRendicion = new Rendicion(fechaRendicion, glosaRendicion, tipoDoc, centroCosto, monto);
+        rendicion.push(nuevaRendicion);
+
+        totalMonto += monto;
+
+        alert(`Fecha Rendición: ${nuevaRendicion.fecha}\nDescripción: ${nuevaRendicion.glosa}\nTipo Documento: ${nuevaRendicion.tipoDoc}\nCentro de costo: ${nuevaRendicion.centroCosto}\nMonto: ${nuevaRendicion.monto}\nMonto Total: ${totalMonto.toFixed(0)}`);
+        
+        continuarRendicion = prompt('¿Desea ingresar otra rendición? si/no');
+        if (continuarRendicion == "no") {
+            console.log('Datos concatenados:', rendicion);
+            break;
+        }
+
+        } while (continuarRendicion.toLowerCase() !== "no");
     }
 
-    } while (continuarRendicion.toLowerCase() !== "no");
-
+obtenerDatosRendicion();
 
 
 
