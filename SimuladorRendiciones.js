@@ -39,8 +39,7 @@ let rendicion = [];
 let continuarRendicion;
 let totalMonto = 0;
 
-//
-
+// Función para definir el tipo de rendición
 function funcTipo(tipoRendicion) {
     switch (tipoRendicion) {
         case 1:
@@ -56,12 +55,8 @@ function funcTipo(tipoRendicion) {
             return "Tipo incorrecto"
     }
 }
-/*
-nombre = `Juan Perez`;
-id = 1234567;
-fecha = `Febrero`;
-*/
 
+// Función para identificar al usuario, los valores se almacenan en array para facil uso
 function getId() {
     let nombre;
     let id;
@@ -76,6 +71,8 @@ function getId() {
 
 const [nombre, id, fecha] = getId();
 
+// Lógica para indicar el tipo de rendición,
+// pendiente, transformar en función y dejar de forma externa el alert
 do {
     tipoRendicion = +prompt(`Indique el tipo de rendición (Ingrese el número)\n\n1.Fondo fijo\n2.Fondo por rendir\n3.Tarjeta de crédito`);
 
@@ -104,7 +101,8 @@ function Rendicion(fecha, glosa, tipoDoc, centroCosto, monto) {
     this.monto = monto;
 }
 
-
+// Función para capturar por prompt datos de rendiciones,
+// queda pendiente separar la impresión del detalle e implementar libreria de fechas
 function obtenerDatosRendicion() {
 
     do {
