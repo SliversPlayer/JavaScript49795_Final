@@ -21,6 +21,10 @@
 // realizar compras, es idéntico a fondo fijo, pero se debe indicar el número
 // de la TC con la que se hace el pago.
 
+// Requerimientos:
+// librerias
+// date-fns
+
 // Identificación de la rendición
 
 let tipoRendicion = 0;
@@ -56,45 +60,42 @@ function funcTipo(tipoRendicion) {
     }
 }
 
-// Función para identificar al usuario, los valores se almacenan en array para facil uso
-function getId() {
-    let nombre;
-    let id;
-    let fecha;
-    nombre = prompt(`Ingrese nombre del empleado`);
-    id = prompt(`Ingrese su ID`);
-    fecha = prompt(`Ingrese mes correspondiente a la rendición`);
 
-    return [nombre, id, fecha];
-    
-}
+function iniciarRendicion() {
+    const nombre = document.getElementById("nombre").value;
+    const id = document.getElementById("id").value;
+    const fecha = document.getElementById("fecha").value;
+    const tipoRendicion = parseInt(document.getElementById("tipoRendicion").value);
 
-const [nombre, id, fecha] = getId();
+    }
 
-// Lógica para indicar el tipo de rendición,
-// pendiente, transformar en función y dejar de forma externa el alert
-do {
-    tipoRendicion = +prompt(`Indique el tipo de rendición (Ingrese el número)\n\n1.Fondo fijo\n2.Fondo por rendir\n3.Tarjeta de crédito`);
+// alert(`Empleado: ${nombre}\nid: ${id}\nFecha Rendición: ${fecha}\nTipo Rendición: ${funcTipo(tipoRendicion)}`);
 
-    if (tipoRendicion !== 1) {
+function mostrarNumTarjeta() {
+    let tipoRendicion = document.getElementById("tipoRendicion").value;
+
         switch (tipoRendicion) {
-            case 2:
-                porRendir = +prompt(`Ingrese el monto a rendir`);
+            case "1":
+                porRendirContainer.style.display = "none";
+                numTarjetaContainer.style.display = "none";
                 break;
-            case 3:
-                numTarjeta = +prompt(`Ingrese los últimos 4 dígitos de la tarjeta`);
+            case "2":
+                porRendirContainer.style.display = "block";
+                numTarjetaContainer.style.display = "none";
+                break;
+            case "3":
+                numTarjetaContainer.style.display = "block";
+                porRendirContainer.style.display = "none";
                 break;
             default:
-                alert(`Tipo incorrecto`)
+               alert(`Tipo incorrecto`)
                 }
             }
-    } while (tipoRendicion > 3 || tipoRendicion < 1)
 
-alert(`Empleado: ${nombre}\nid: ${id}\nFecha Rendición: ${fecha}\nTipo Rendición: ${funcTipo(tipoRendicion)}`);
 
 // Constructor para representar una rendición
 function Rendicion(fecha, glosa, tipoDoc, centroCosto, monto) {
-    this.fecha = fecha;
+    this.fecha = format(new Date(fecha), 'dd-MM-yyyy');
     this.glosa = glosa;
     this.tipoDoc = tipoDoc;
     this.centroCosto = centroCosto;
@@ -106,11 +107,11 @@ function Rendicion(fecha, glosa, tipoDoc, centroCosto, monto) {
 function obtenerDatosRendicion() {
 
     do {
-        const fechaRendicion = prompt(`Ingrese fecha DD-MM-YY`);
-        const glosaRendicion = prompt(`Ingrese descripción breve de la rendición`);
-        const tipoDoc = parseInt(prompt(`Boleta o Factura\n\n1.Boleta\n2.Factura`));
-        const centroCosto = prompt(`Ingrese el centro de costo según corresponda`);
-        const monto = parseFloat(prompt(`Monto a rendir`));
+        fechaRendicion = document.getElementById("fechaRendicion").value;
+        glosaRendicion = document.getElementById("glosaRendicion").value;
+        tipoDoc = document.getElementById("tipoDoc").value;
+        centroCosto = document.getElementById("centroCosto").value;
+        monto = document.getElementById("monto").value;
 
         const nuevaRendicion = new Rendicion(fechaRendicion, glosaRendicion, tipoDoc, centroCosto, monto);
         rendicion.push(nuevaRendicion);

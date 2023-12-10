@@ -3,9 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rendición de Gastos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.26.1"></script>
 </head>
 <body>
+    <h1>Rendición de Gastos</h1>
+
+    <form id="rendicionForm">
+        <label for="nombre">Nombre del empleado:</label>
+        <input type="text" id="nombre" required>
+
+        <label for="id">ID:</label>
+        <input type="text" id="id" required>
+
+        <label for="fecha">Mes correspondiente a la rendición:</label>
+        <input type="month" id="fecha" required>
+        <!--
+        <select id="fecha" required>
+            <option value="1">Enero</option>
+            <option value="2">Febrero</option>
+            <option value="3">Marzo</option>
+            <option value="4">Abril</option>
+            <option value="5">Mayo</option>
+            <option value="6">Junio</option>
+            <option value="7">Julio</option>
+            <option value="8">Agosto</option>
+            <option value="9">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+        </select>
+        -->
+
+        <label for="tipoRendicion">Tipo de rendición:</label>
+        <select id="tipoRendicion" required onchange="mostrarNumTarjeta()">
+            <option value="1">Fondo Fijo</option>
+            <option value="2">Fondo por Rendir</option>
+            <option value="3">Tarjeta de Crédito</option>
+        </select>
+
+        <div id="porRendirContainer" style="display:none;">
+            <label for="porRendir">Monto a rendir:</label>
+            <input type="number" id="porRendir" onwheel="return false">
+        </div>
+
+        <div id="numTarjetaContainer" style="display:none;">
+            <label for="numTarjeta">Últimos 4 dígitos de la tarjeta:</label>
+            <input type="number" id="numTarjeta" onwheel="return false" onkeydown="return false">
+        </div>
+
+        <button type="button" onclick="obtenerDatosRendicion()">Iniciar Rendición</button>
+    </form>
 
     <script src="SimuladorRendiciones.js"></script>
 
