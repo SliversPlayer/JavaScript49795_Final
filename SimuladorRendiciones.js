@@ -29,6 +29,9 @@
 
 let tipoRendicion = 0;
 const infoRendicion = [];
+let nombre;
+let fecha;
+let id;
 
 //Rendicion
 
@@ -41,30 +44,40 @@ let rendicion = [];
 let totalMonto = 0;
 let porRendir;
 let numTarjeta;
+let identificador;
+
+const almacenamientoLocal = JSON.parse(localStorage.getItem('almacenamientoLocal')) || {};
+
 
 function iniciarRendicion() {
-    const nombre = document.getElementById("nombre").value;
-    const id = document.getElementById("id").value;
-    const fecha = document.getElementById("fecha").value;
-    const tipoRendicion = document.getElementById("tipoRendicion").value;
+    nombre = document.getElementById("nombre").value;
+    id = document.getElementById("id").value;
+    fecha = document.getElementById("fecha").value;
+    tipoRendicion = document.getElementById("tipoRendicion").value;
     porRendir = document.getElementById("porRendir").value || null;
     numTarjeta = document.getElementById("numTarjeta").value || null;
 
-    const datosRendicion = {
+    almacenamientoLocal[id] = {
         nombre,
-        id,
         fecha,
         tipoRendicion,
         porRendir,
-        numTarjeta
-};
-    infoRendicion.push(datosRendicion);
-    alert(`Empleado: ${nombre}\n id: ${id}\nFecha Rendición: ${fecha}\nTipo Rendición: ${funcTipo(tipoRendicion)}`);
+        numTarjeta,
+        rendiciones:[]
+    };
 
-    limpiarFormulario();
+        // Construye la URL con el parámetro "id"
+        var url = 'pages/rendicion.html?id=' + encodeURIComponent(id);
+
+        // Redirige a la nueva página con el parámetro "id"
+        window.location.href = url;
+     
+
+    localStorage.setItem('almacenamientoLocal', JSON.stringify(almacenamientoLocal));
+
+
 }
-
-// alert(`Empleado: ${nombre}\n id: ${id}\nFecha Rendición: ${fecha}\nTipo Rendición: ${funcTipo(tipoRendicion)}`);
+identificador = identificador;
 
 function mostrarNumTarjeta() {
     let tipoRendicion = document.getElementById("tipoRendicion").value;
@@ -86,30 +99,29 @@ function mostrarNumTarjeta() {
                 }
             }
 
-
-// Constructor para representar una rendición
-function Rendicion(fechaRendicion, glosaRendicion, tipoDoc, centroCosto, monto) {
-    this.fechaRendicion = fechaRendicion;
-    this.glosaRendicion = glosaRendicion;
-    this.tipoDoc = tipoDoc;
-    this.centroCosto = centroCosto;
-    this.monto = monto;
-}
-
-// Función para capturar por prompt datos de rendiciones,
-function obtenerDatosRendicion() {
+function agregarRendicion(id) {
     fechaRendicion = document.getElementById("fechaRendicion").value;
     glosaRendicion = document.getElementById("glosaRendicion").value;
     tipoDoc = document.getElementById("tipoDoc").value;
     centroCosto = document.getElementById("centroCosto").value;
     monto = document.getElementById("monto").value;
 
-    const nuevaRendicion = new Rendicion(fechaRendicion, glosaRendicion, tipoDoc, centroCosto, monto);
-    rendicion.push(nuevaRendicion);
-
     totalMonto += monto;
 
-    alert(`Fecha Rendición: ${nuevaRendicion.fecha}\nDescripción: ${nuevaRendicion.glosa}\nTipo Documento: ${nuevaRendicion.tipoDoc}\nCentro de costo: ${nuevaRendicion.centroCosto}\nMonto: ${nuevaRendicion.monto}\nMonto Total: ${totalMonto.toFixed(0)}`);
+    const queryString = window.location.search;
+    alert(queryString);
+    const params = new URLSearchParams(queryString);
+    alert(params);
+    const idString = params.get('id');
+    alert(idString);
+
+    almacenamientoLocal[idString].rendiciones.push({
+        fechaRendicion,
+        glosaRendicion,
+        centroCosto,
+        tipoDoc,
+        monto,
+    });
 }
 
 // Convert the value to string for better identification
@@ -127,7 +139,8 @@ function funcTipo(tipoRendicion) {
             return `Tarjeta de Crédito ${numTarjeta}`;
             break;
         default:
-            return "Tipo incorrecto"
+            console.error("Tipo incorrecto");
+            return "Tipo incorrecto";
     }
 }
 

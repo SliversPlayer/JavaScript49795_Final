@@ -6,7 +6,7 @@
     <title>Rendición de Gastos</title>
     <link rel="stylesheet" href="../css/bootstrap.css ">
     <link rel="stylesheet" href="../css/styles.css ">
-    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.26.1"></script>
+
 </head>
 <body>
     <h1>Rendición de Gastos</h1>
@@ -42,12 +42,15 @@
             <option value="23">Nota de Crédito</option>
             <option value="9">Otros</option>
         </select>
+
+        <label for="monto">Monto a rendir:</label>
+        <input type="number" id="monto">
     
-        <button type="button" class="btn-primary" onclick="iniciarRendicion()">Iniciar Rendición</button>
+        <button type="button" class="btn-primary" onclick="agregarRendicion()">Iniciar Rendición</button>
 
     </form>
 
-    <script src="SimuladorRendiciones.js"></script>
+    <script src="../SimuladorRendiciones.js"></script>
 
 </body>
 </html>

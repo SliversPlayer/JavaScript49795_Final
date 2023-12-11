@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rendición de Gastos</title>
+    <title>Ingreso</title>
     <link rel="stylesheet" href="./css/bootstrap.css ">
     <link rel="stylesheet" href="./css/styles.css ">
     <!--<script src="https://cdn.jsdelivr.net/npm/date-fns@2.26.1"></script>-->
@@ -15,7 +15,7 @@
         <input type="text" id="nombre" required>
 
         <label for="id">Identificador Colaborador:</label>
-        <input type="text" id="id" required>
+        <input type="number" id="id" required>
 
         <label for="fecha">Mes de rendición:</label>
         <input type="month" id="fecha" required>
@@ -37,7 +37,7 @@
             <input type="number" id="numTarjeta">
         </div>
 
-        <button type="button" class="btn-primary" onclick="iniciarRendicion()">Crear Rendición</button>
+        <button type="button" class="btn-primary" onclick="iniciarRendicion();">Crear Rendición</button>
     </form>
 
     <script src="SimuladorRendiciones.js"></script>
