@@ -21,11 +21,8 @@
 // realizar compras, es idéntico a fondo fijo, pero se debe indicar el número
 // de la TC con la que se hace el pago.
 
-// Requerimientos:
-// librerias
-// date-fns
 
-// Identificación de la rendición
+// User id
 
 let tipoRendicion = 0;
 const infoRendicion = [];
@@ -33,7 +30,7 @@ let nombre;
 let fecha;
 let id;
 
-//Rendicion
+//Related var with expense report
 
 let fechaRendicion;
 let glosaRendicion;
@@ -66,10 +63,10 @@ function iniciarRendicion() {
         rendiciones:[]
     };
 
-        // Construye la URL con el parámetro "id"
+        // conmat with URL and suffix with ID parameter
         var url = 'pages/rendicion.html?id=' + encodeURIComponent(id);
 
-        // Redirige a la nueva página con el parámetro "id"
+        // Redirect using the URL
         window.location.href = url;
      
 
@@ -148,7 +145,7 @@ function funcTipo(tipoRendicion) {
 // Clean the form
 function limpiarFormulario() {
     document.getElementById("rendicionForm").reset();
-    // Puedes ocultar los contenedores adicionales aquí si es necesario
+    // Return the display to none
     document.getElementById("porRendirContainer").style.display = "none";
     document.getElementById("numTarjetaContainer").style.display = "none";
 }
