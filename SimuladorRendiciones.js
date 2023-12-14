@@ -107,7 +107,7 @@ function agregarRendicion(id) {
     monto = document.getElementById("monto").value;
 
     totalMonto += monto;
-
+// Query Parameters
     const queryString = window.location.search;
     alert(queryString);
     const params = new URLSearchParams(queryString);
