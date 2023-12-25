@@ -4,7 +4,7 @@
 //Ciclo (For - Do-While)
 
 // Simulador de Rendición de Gastos
-// En la empresa donde me trabajo, muchos de los trabajadores tienen
+// En la empresa donde trabajo, muchos de los trabajadores tienen
 // labores en terreno, y los gastos de alimentación, estadia, combustibles, etc.
 // durante los servicios deben ser rendidos para que la empresa los reembolse al trabajor,
 // actualmente se utiliza una planilla excel con multiples validaciones de datos,
