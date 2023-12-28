@@ -1,25 +1,5 @@
-
-// Simulador de Rendición de Gastos
-// En la empresa donde trabajo, muchos de los trabajadores tienen
-// labores en terreno, y los gastos de alimentación, estadia, combustibles, etc.
-// durante los servicios deben ser rendidos para que la empresa los reembolse al trabajor,
-// actualmente se utiliza una planilla excel con multiples validaciones de datos,
-// ademas se debe tomar una fotografia a cada boleta e ingresar los datos, haciendo
-// la tarea lenta y tediosa.
-
-// Existen 3 opciones de rendición, 
-// Fondo fijo: El trabajdor utiliza sus propios recursos los cuales rinde por
-// medio de comprobantes de pago.
-// Fondo por rendir: La empresa le entrega un monto de dinero el cual el empleado
-// debe rendir posteriormente, en caso de que sobre dinero, este debe devolverlo,
-// en caso contrario, se paga la diferencia al trabajador.
-// Tarjeta de crédito: La empresa dispone de varias tarjetas de crédito para
-// realizar compras, es idéntico a fondo fijo, pero se debe indicar el número
-// de la TC con la que se hace el pago.
-
-
 // User id
-let id;
+
 
 //Related var to expense report
 
@@ -30,22 +10,18 @@ let centroCosto;
 let monto;
 let totalMonto = 0;
 let numero = 0;
-let idString = 0;
 
 const almacenamientoLocal = JSON.parse(localStorage.getItem('almacenamientoLocal')) || {};
 
-/*
+
 // Query Parameters
 const queryString = window.location.search;
-console.log(queryString);
+//console.log(queryString);
 const params = new URLSearchParams(queryString);
-console.log(params);
-var idString = parseInt(params.get('id'));
+const idString = params.get('id');
 console.log(idString);
-*/
 
-
-function ingresarRendicion(id) {
+function ingresarRendicion() {
     fechaRendicion = document.getElementById("fechaRendicion").value;
     glosaRendicion = document.getElementById("glosaRendicion").value;
     tipoDoc = document.getElementById("tipoDoc").value;
@@ -53,14 +29,6 @@ function ingresarRendicion(id) {
     monto = document.getElementById("monto").value;
 
     totalMonto += monto;
-
-// Query Parameters
-    const queryString = window.location.search;
-    //alert(queryString);
-    const params = new URLSearchParams(queryString);
-    //alert(params);
-    const idString = parseInt(params.get('id'));
-    console.log(idString);
 
     almacenamientoLocal[idString].rendiciones.push({
         fechaRendicion,
@@ -70,13 +38,13 @@ function ingresarRendicion(id) {
         monto,
     });
 
-    
+    localStorage.setItem('almacenamientoLocal', JSON.stringify(almacenamientoLocal));
+
     dato = (almacenamientoLocal[idString].rendiciones);
-    largo = (almacenamientoLocal[idString].rendiciones);
-    console.log(dato);
+    largo = (almacenamientoLocal[idString].rendiciones.length);
+    ulti = (dato[largo-1]);
 
 }
-
 
 setTodayDate()
 
@@ -97,22 +65,17 @@ function setTodayDate() {
 
 }
 
-function generateReport() {
+function generateReport(id) {
 
     // conmat with URL and suffix with ID parameter
-    const url2 = './reporte.html?id=' + encodeURIComponent(idString);
+    const url = './reporte.html?id=' + encodeURIComponent(id);
 
     // Redirect using the URL
-    window.location.href = url2;
+    window.location.href = url;
 }
 
 // Clean the form
 function limpiarFormulario() {
     document.getElementById("rendicionForm").reset();
     setTodayDate()
-}
-
-function test() {
-    const arrayRecuperado = JSON.parse(localStorage.getItem('almacenamientoLocal'));
-
 }
