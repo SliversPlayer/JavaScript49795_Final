@@ -41,6 +41,7 @@ let identificador;
 
 const almacenamientoLocal = JSON.parse(localStorage.getItem('almacenamientoLocal')) || {};
 
+setTodayMonth()
 
 function iniciarRendicion() {
     nombre = document.getElementById("nombre").value;
@@ -70,7 +71,6 @@ function iniciarRendicion() {
 
 
 }
-identificador = identificador;
 
 function mostrarNumTarjeta() {
     let tipoRendicion = document.getElementById("tipoRendicion").value;
@@ -135,25 +135,19 @@ function funcTipo(tipoRendicion) {
     }
 }
 
-// get date element by ID
-var fechaInput = document.getElementById('fecha');
+function setTodayMonth() {
+    // Get date element by ID
+    var fechaInput = document.getElementById('fecha');
 
-// get current date
-var fechaActual = new Date();
+    // Get current date
+    var fechaActual = new Date();
 
-// Parse current date and set default value
-var ano = fechaActual.getFullYear();
-var mes = (fechaActual.getMonth() + 1).toString().padStart(2, '0'); // +1 porque los meses se indexan desde 0
-var dia = fechaActual.getDate().toString().padStart(2, '0');
-var fechaPorDefecto = ano + '-' + mes;
+    // Parse current date and set default value
+    var ano = fechaActual.getFullYear();
+    var mes = (fechaActual.getMonth() + 1).toString().padStart(2, '0'); // +1 porque los meses se indexan desde 0
+    var dia = fechaActual.getDate().toString().padStart(2, '0');
+    var fechaPorDefecto = ano + '-' + mes;
 
-fechaInput.value = fechaPorDefecto;
-/*
-// Clean the form
-function limpiarFormulario() {
-    document.getElementById("rendicionForm").reset();
-    // Return the display to none
-    document.getElementById("porRendirContainer").style.display = "none";
-    document.getElementById("numTarjetaContainer").style.display = "none";
+    fechaInput.value = fechaPorDefecto;
+
 }
-*/

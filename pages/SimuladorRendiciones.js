@@ -19,29 +19,33 @@
 
 
 // User id
-
-let tipoRendicion = 0;
-const infoRendicion = [];
-let nombre;
-let fecha;
 let id;
 
-//Related var with expense report
+//Related var to expense report
 
 let fechaRendicion;
 let glosaRendicion;
 let tipoDoc;
 let centroCosto;
 let monto;
-let rendicion = [];
 let totalMonto = 0;
-let porRendir;
-let numTarjeta;
-let identificador;
+let numero = 0;
+let idString = 0;
 
 const almacenamientoLocal = JSON.parse(localStorage.getItem('almacenamientoLocal')) || {};
 
-function agregarRendicion(id) {
+/*
+// Query Parameters
+const queryString = window.location.search;
+console.log(queryString);
+const params = new URLSearchParams(queryString);
+console.log(params);
+var idString = parseInt(params.get('id'));
+console.log(idString);
+*/
+
+
+function ingresarRendicion(id) {
     fechaRendicion = document.getElementById("fechaRendicion").value;
     glosaRendicion = document.getElementById("glosaRendicion").value;
     tipoDoc = document.getElementById("tipoDoc").value;
@@ -49,13 +53,14 @@ function agregarRendicion(id) {
     monto = document.getElementById("monto").value;
 
     totalMonto += monto;
-    // Query Parameters
+
+// Query Parameters
     const queryString = window.location.search;
     //alert(queryString);
     const params = new URLSearchParams(queryString);
     //alert(params);
-    const idString = params.get('id');
-    //alert(idString);
+    const idString = parseInt(params.get('id'));
+    console.log(idString);
 
     almacenamientoLocal[idString].rendiciones.push({
         fechaRendicion,
@@ -64,30 +69,50 @@ function agregarRendicion(id) {
         tipoDoc,
         monto,
     });
+
+    
+    dato = (almacenamientoLocal[idString].rendiciones);
+    largo = (almacenamientoLocal[idString].rendiciones);
+    console.log(dato);
+
 }
 
 
+setTodayDate()
 
-// get date element by ID
-var fechaInput = document.getElementById('fechaRendicion');
+function setTodayDate() {
+    // Get date element by ID
+    var fechaInput = document.getElementById('fechaRendicion');
 
-// get current date
-var fechaActual = new Date();
+    // Get current date
+    var fechaActual = new Date();
 
-// Parse current date and set default value
-var ano = fechaActual.getFullYear();
-var mes = (fechaActual.getMonth() + 1).toString().padStart(2, '0'); // +1 porque los meses se indexan desde 0
-var dia = fechaActual.getDate().toString().padStart(2, '0');
-var fechaPorDefecto = ano + '-' + mes + '-' + dia;
+    // Parse current date and set default value
+    var ano = fechaActual.getFullYear();
+    var mes = (fechaActual.getMonth() + 1).toString().padStart(2, '0'); // +1 porque los meses se indexan desde 0
+    var dia = fechaActual.getDate().toString().padStart(2, '0');
+    var fechaPorDefecto = ano + '-' + mes + '-' + dia;
 
-fechaInput.value = fechaPorDefecto;
+    fechaInput.value = fechaPorDefecto;
 
-/*
+}
+
+function generateReport() {
+
+    // conmat with URL and suffix with ID parameter
+    const url2 = './reporte.html?id=' + encodeURIComponent(idString);
+
+    // Redirect using the URL
+    window.location.href = url2;
+}
+
 // Clean the form
 function limpiarFormulario() {
     document.getElementById("rendicionForm").reset();
-    // Return the display to none
-    document.getElementById("porRendirContainer").style.display = "none";
-    document.getElementById("numTarjetaContainer").style.display = "none";
+    setTodayDate()
 }
-*/
+
+function test() {
+    const arrayRecuperado = JSON.parse(localStorage.getItem('almacenamientoLocal'));
+
+}

@@ -104,6 +104,19 @@ input[type="date"] {
     box-sizing: border-box;
 }
 
+/*REPORTE*/
+.reportContainer {
+  height: auto;
+  width: 600px;
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  color: #511212;
+  padding: 10px;
+  border: solid 6px rgb(52, 140, 255);
+  border-radius: 20px;
+  margin: auto;
+}
+
 .containter-sm {
   width: 100%;
   display: block;
