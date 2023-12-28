@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rendición de Gastos</title>
+    <title>Ingreso de Gastos</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/styles.css">
 
@@ -12,23 +12,27 @@
     <h1>Rendición de Gastos</h1>
     <form id="rendicionForm">
         <label for="fechaRendicion">Fecha de Rendición:</label>
-        <input type="date" id="fechaRendicion" required>
+        <input type="date" id="fechaRendicion" name="fechaRendicion" required>
 
         <label for="glosaRendicion">Descripción Rendición:</label>
         <input type="text" id="glosaRendicion" required>
 
+        <label for="centroCosto">Centro de Costo:</label>
         <select id="centroCosto"></select>
-        <script src="centroCosto.js"></script>
 
         <label for="tipoDoc">Tipo de Documento:</label>
-        <select id="tipoDoc" required>
+        <select id="tipoDoc" required></select>
+
+            <!--
             <option value="6">Boleta</option>
             <option value="22">Factura</option>
             <option value="30">Factura Exenta</option>
             <option value="7">Boleta de Honorarios</option>
             <option value="23">Nota de Crédito</option>
             <option value="9">Otros</option>
-        </select>
+            -->
+
+
 
         <label for="monto">Monto a rendir:</label>
         <input type="number" id="monto">
@@ -38,7 +42,9 @@
         </div>
     </form>
 
-    <script src="../SimuladorRendiciones.js"></script>
+    <script src="llenarSelect.js"></script>
+    <script src="SimuladorRendiciones.js"></script>
+
 
 </body>
 </html>

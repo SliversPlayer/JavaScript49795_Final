@@ -1,0 +1,8 @@
+[
+    {"value":"6", "text": "Boleta"},
+    {"value":"22", "text": "Factura"},
+    {"value":"30", "text": "Factura Exenta"},
+    {"value":"7", "text": "Boleta de Honorarios"},
+    {"value":"23", "text": "Nota de Crédito"},
+    {"value":"9", "text": "Otros"}
+]

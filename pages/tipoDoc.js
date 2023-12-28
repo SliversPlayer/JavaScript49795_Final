@@ -1,6 +1,6 @@
-var select = document.getElementById("centroCosto");
+var select = document.getElementById("tipoDoc");
 
-fetch("centroCosto.json")
+fetch("tipoDoc.json")
   .then(response => response.json())
   .then(data => {
     data.forEach(opcion => {

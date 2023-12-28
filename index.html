@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ingreso</title>
-    <link rel="stylesheet" href="./css/bootstrap.css ">
-    <link rel="stylesheet" href="./css/styles.css ">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
     <h1>Rendición de Gastos</h1>
@@ -17,13 +17,10 @@
         <input type="number" id="id" required>
 
         <label for="fecha">Mes de rendición:</label>
-        <input type="month" id="fecha" required>
+        <input type="month" id="fecha" name="fecha" required>
 
         <label for="tipoRendicion">Tipo de rendición:</label>
- 
         <select id="tipoRendicion" required onchange="mostrarNumTarjeta()"></select>
-        <script src="tipoRendicion.js"></script>
-
 
         <div id="porRendirContainer" style="display:none;">
             <label for="porRendir">Monto a rendir:</label>
@@ -36,9 +33,11 @@
         </div>
 
         <button type="button" class="btn-primary" onclick="iniciarRendicion();">Iniciar Rendición</button>
+
     </form>
 
-    <script src="SimuladorRendiciones.js"></script>
+    <script src="tipoRendicion.js"></script>
+    <script src="inputData.js"></script>
 
 </body>
 </html>

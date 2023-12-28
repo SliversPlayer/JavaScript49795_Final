@@ -1,0 +1,29 @@
+{
+    "tipoRendicion": [
+        {"value": "1", "text": "Fondo Fijo"},
+        {"value": "2", "text": "Fondo por Rendir"},
+        {"value": "3", "text": "Tarjeta de Crédito"}
+],
+    "centroCosto": [
+        {"value": "725", "text": "Adquisiciones"},
+        {"value": "726", "text": "Adquisiciones COMEX"},
+        {"value": "520", "text": "Andina"},
+        {"value": "744", "text": "Bodega"},
+        {"value": "720", "text": "Gerencia de Administración"},
+        {"value": "715", "text": "Gerencia de Operaciones"},
+        {"value": "710", "text": "Gerencia General"},
+        {"value": "610", "text": "Investigación y Desarrollo"},
+        {"value": "115", "text": "Laboratorio"},
+        {"value": "118", "text": "Post Ventas"},
+        {"value": "320", "text": "Servicio Técnico"},
+        {"value": "100", "text": "Ventas"}
+],
+    "tipoDoc":[
+        {"value":"6", "text": "Boleta"},
+        {"value":"22", "text": "Factura"},
+        {"value":"30", "text": "Factura Exenta"},
+        {"value":"7", "text": "Boleta de Honorarios"},
+        {"value":"23", "text": "Nota de Crédito"},
+        {"value":"9", "text": "Otros"}
+]
+}
