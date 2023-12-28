@@ -20,11 +20,10 @@
         <input type="month" id="fecha" required>
 
         <label for="tipoRendicion">Tipo de rendición:</label>
-        <select id="tipoRendicion" required onchange="mostrarNumTarjeta()">
-            <option value="1">Fondo Fijo</option>
-            <option value="2">Fondo por Rendir</option>
-            <option value="3">Tarjeta de Crédito</option>
-        </select>
+ 
+        <select id="tipoRendicion" required onchange="mostrarNumTarjeta()"></select>
+        <script src="tipoRendicion.js"></script>
+
 
         <div id="porRendirContainer" style="display:none;">
             <label for="porRendir">Monto a rendir:</label>
@@ -36,7 +35,7 @@
             <input type="number" id="numTarjeta">
         </div>
 
-        <button type="button" class="btn-primary" onclick="iniciarRendicion();">Crear Rendición</button>
+        <button type="button" class="btn-primary" onclick="iniciarRendicion();">Iniciar Rendición</button>
     </form>
 
     <script src="SimuladorRendiciones.js"></script>

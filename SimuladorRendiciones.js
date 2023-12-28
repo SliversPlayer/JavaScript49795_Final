@@ -106,11 +106,11 @@ function agregarRendicion(id) {
     totalMonto += monto;
 // Query Parameters
     const queryString = window.location.search;
-    alert(queryString);
+    //alert(queryString);
     const params = new URLSearchParams(queryString);
-    alert(params);
+    //alert(params);
     const idString = params.get('id');
-    alert(idString);
+    //alert(idString);
 
     almacenamientoLocal[idString].rendiciones.push({
         fechaRendicion,
@@ -123,8 +123,6 @@ function agregarRendicion(id) {
 
 // Convert the value to string for better identification
 function funcTipo(tipoRendicion) {
-
-
     switch (tipoRendicion) {
         case "1":
             return `Fondo Fijo`;
@@ -140,7 +138,6 @@ function funcTipo(tipoRendicion) {
             return "Tipo incorrecto";
     }
 }
-
 
 // Clean the form
 function limpiarFormulario() {
