@@ -1,21 +1,44 @@
-
+// Transform 'almacenamientoLocal' undefined object in string object
 var datosAlmacenados = localStorage.getItem('almacenamientoLocal');
+// Parse converts string type data into array object JS type data
 var arrayDatos = JSON.parse(datosAlmacenados);
 
-// Verificar si hay datos en el Local Storage
+// Query Parameters
+const queryString = window.location.search;
+//console.log(queryString);
+const params = new URLSearchParams(queryString);
+const idString = params.get('id');
+
+
+/*
+// Verify if Local Storage has data in it
 if (datosAlmacenados) {
-    // Convertir los datos de cadena JSON a un objeto JavaScript
+    // Parse converts string type data into array object JS type data
     var datosParseados = JSON.parse(datosAlmacenados);
 
-    // Imprimir los datos por consola
+    // Print data by console
     console.log('Datos almacenados en el Local Storage:');
     console.log(datosParseados);
-    console.log(datosParseados[111]);
 } else {
     console.log('No hay datos almacenados en el Local Storage.');
 }
 
-// Crear una tabla para mostrar los datos
-var tabla = document.createElement('table');
+document.getElementById('data-output').innerHTML = arrayDatos.name;
+*/
+localStorage.setItem('miDato', 'Hola, este es mi dato almacenado en localStorage');
 
-var encabezado = tabla.createTHead();
+// Recupera el valor de localStorage
+var miDato = localStorage.getItem('miDato');
+
+// Muestra el valor en el contenedor HTML
+var miDatoContainer = document.getElementById('miDatoContainer');
+
+
+miDatoContainer.textContent = datosAlmacenados;
+
+dato = (datosAlmacenados[idString].rendiciones);
+/*
+largo = (datosAlmacenados[idString].rendiciones.length);
+ulti = (dato[largo-1]);
+*/
+

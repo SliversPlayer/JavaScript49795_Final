@@ -19,7 +19,7 @@ const queryString = window.location.search;
 //console.log(queryString);
 const params = new URLSearchParams(queryString);
 const idString = params.get('id');
-console.log(idString);
+
 
 function ingresarRendicion() {
     fechaRendicion = document.getElementById("fechaRendicion").value;
@@ -65,13 +65,14 @@ function setTodayDate() {
 
 }
 
-function generateReport(id) {
-
-    // conmat with URL and suffix with ID parameter
-    const url = './reporte.html?id=' + encodeURIComponent(id);
-
+function generateReport() {
+    
+    //console.log(idString);
+    // concat with URL and suffix with ID parameter
+    const url = './reporte.html?id=' + encodeURIComponent(idString);
+    console.log(url)
     // Redirect using the URL
-    window.location.href = url;
+    window.location.href = url
 }
 
 // Clean the form
