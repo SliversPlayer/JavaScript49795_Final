@@ -33,11 +33,11 @@ let glosaRendicion;
 let tipoDoc;
 let centroCosto;
 let monto;
-let rendicion = [];
 let totalMonto = 0;
 let porRendir;
 let numTarjeta;
 let identificador;
+let rendicion = [];
 
 const almacenamientoLocal = JSON.parse(localStorage.getItem('almacenamientoLocal')) || {};
 
