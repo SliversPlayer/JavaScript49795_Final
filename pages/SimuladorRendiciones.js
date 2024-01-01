@@ -25,15 +25,17 @@ function ingresarRendicion() {
     glosaRendicion = document.getElementById("glosaRendicion").value;
     tipoDoc = document.getElementById("tipoDoc").value;
     centroCosto = document.getElementById("centroCosto").value;
+    tipoGasto = document.getElementById("tipoGasto").value;
     monto = document.getElementById("monto").value;
 
-    totalMonto += monto;
+
 
     almacenamientoLocal[idString].rendiciones.push({
         fechaRendicion,
         glosaRendicion,
         centroCosto,
         tipoDoc,
+        tipoGasto,
         monto,
     });
 

@@ -24,11 +24,13 @@
 
             const centroCosto = data.centroCosto;
             const tipoDoc = data.tipoDoc;
+            const tipoGasto = data.tipoGasto;
 
             // Llenar los selects con las opciones correspondientes
 
             llenarSelect('centroCosto', centroCosto);
             llenarSelect('tipoDoc', tipoDoc);
+            llenarSelect('tipoGasto', tipoGasto);
           })
           .catch(error => {
             console.error('Error:', error);

@@ -1,5 +1,12 @@
 const almacenamientoLocal = JSON.parse(localStorage.getItem('almacenamientoLocal')) || {};
 
+// Custom currency format
+const formatter = new Intl.NumberFormat('es-CL', {
+    style: 'currency',
+    currency: 'CLP',   
+    }
+);
+
 // Transform 'almacenamientoLocal' undefined object in string object
 var datosAlmacenados = localStorage.getItem('almacenamientoLocal');
 // Parse converts string type data into array object JS type data
@@ -32,7 +39,6 @@ fecha = (almacenamientoLocal[idString].fecha);
 tipoRendicion = (almacenamientoLocal[idString].tipoRendicion);
 
 dato = (almacenamientoLocal[idString].rendiciones);
-
 largo = (almacenamientoLocal[idString].rendiciones.length);
 ulti = (dato[largo-1]);
 
@@ -58,20 +64,6 @@ var arrayRendiciones = Object.keys(objectRendiciones).map(function(key) {
 
 test = Object.values(almacenamientoLocal[idString].rendiciones[0]);
 /*
-// Itera sobre el array y agrega cada elemento al contenido HTML
-for (var i = 0; i < miArray.length; i++) {
-    console.log(miArray[i]);
-    resultadoElement.innerHTML += miArray[i];
-}
-
-// Itera sobre el array y agrega cada elemento al contenido HTML
-for (var i = 0; i < arrayRendiciones.length; i++) {
-    resultadoElement.innerHTML += "<li>" + arrayRendiciones[i] + "</li>";
-    }
-*/
-
-// IMPRImir ELEMENTOS EN HTML
-// PENDIENTE FALTA RRECORRER EL OBJETO ADECuadAMENTE
 var miObjeto = almacenamientoLocal[idString].rendiciones[0];
 
 
@@ -95,8 +87,35 @@ if (miObjeto.hasOwnProperty(clave)) {
 }
 }
 
+*/
 
-// Como revisar el array dentro del objeto local storage
-// almacenamientoLocal[idString].rendiciones[3]
-// Cantidad de parámetros almacenados en el array
-// almacenamientoLocal[idString].rendiciones.length-1
+var container3 = document.getElementById("resultado");
+
+var html = '<table>';
+html += '<tr><th>Fecha</th><th>Glosa</th><th>Centro de Costo</th><th>Tipo de Documento</th><th>Tipo de Gasto</th><th>Monto</th></tr>';
+
+var totalMonto = 0;
+
+// Recorre las subrendiciones
+for (var i = 0; i < almacenamientoLocal[idString].rendiciones.length; i++) {
+    var subrendicion = almacenamientoLocal[idString].rendiciones[i];
+
+    
+    html += '<td>'+ subrendicion.fechaRendicion +'</td>';
+    html += '<td>'+ subrendicion.glosaRendicion  +'</td>';
+    html += '<td>'+ subrendicion.centroCosto +'</td>';
+    html += '<td>'+ subrendicion.tipoDoc +'</td>';
+    html += '<td>'+ subrendicion.tipoGasto +'</td>';
+    html += '<td>'+ formatter.format(subrendicion.monto) +'</td>';
+    totalMonto += parseInt(subrendicion.monto);
+    html += '</tr>';
+
+}
+html +='</table>';
+
+
+var totalMontoReport = document.getElementById('totalMonto');
+totalMontoReport.textContent = formatter.format(totalMonto);
+
+container3.innerHTML += html;
+

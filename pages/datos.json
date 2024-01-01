@@ -1,8 +1,17 @@
 {
-    "tipoRendicion": [
-        {"value": "1", "text": "Fondo Fijo"},
-        {"value": "2", "text": "Fondo por Rendir"},
-        {"value": "3", "text": "Tarjeta de Crédito"}
+    "tipoGasto": [
+        {"value": "170", "text": "Arriendo de Vehiculos y Traslado"},
+        {"value": "303", "text": "Articulos de Aseo"},
+        {"value": "158", "text": "Bienestar del Personal y Recreación"},
+        {"value": "173", "text": "Colación"},
+        {"value": "171", "text": "Combustible"},
+        {"value": "160", "text": "Consumo del Personal"},
+        {"value": "212", "text": "Correspondencia"},
+        {"value": "165", "text": "Despachos y Embalajes"},
+        {"value": "1202002", "text": "Enseres"},
+        {"value": "107", "text": "EPP Elemento de protección Personal"},
+        {"value": "167", "text": "Fletes Nacionales"},
+        {"value": "320", "text": "Gastos Bancarios"}
 ],
     "centroCosto": [
         {"value": "725", "text": "Adquisiciones"},
