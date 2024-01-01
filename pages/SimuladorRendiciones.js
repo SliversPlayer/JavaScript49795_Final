@@ -1,6 +1,5 @@
 // User id
 
-
 //Related var to expense report
 
 let fechaRendicion;
@@ -44,6 +43,27 @@ function ingresarRendicion() {
     largo = (almacenamientoLocal[idString].rendiciones.length);
     ulti = (dato[largo-1]);
 
+    mensaje();
+    
+}
+
+function mensaje() {
+    Swal.fire({
+        title: "Gasto Ingresado ",
+        text: "¿Que deseas hacer?",
+        icon: "success",
+        showDenyButton: true,
+        confirmButtonText: "Ingresar Otro",
+        denyButtonText: `Generar Reporte`
+      }).then((result) => {
+        // If confirm is pressed, it will delete all the non default data in the form
+        if (result.isConfirmed) {
+          limpiarFormulario();
+        // if denied is pressed, the user will be redirected to the next screen, report table
+        } else if (result.isDenied) {
+          generateReport();
+        }
+      });
 }
 
 setTodayDate()

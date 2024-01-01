@@ -60,16 +60,14 @@ function iniciarRendicion() {
         rendiciones:[]
     };
 
+    localStorage.setItem('almacenamientoLocal', JSON.stringify(almacenamientoLocal));
+
         // conmat with URL and suffix with ID parameter
         var url = 'pages/rendicion.html?id=' + encodeURIComponent(id);
 
         // Redirect using the URL
         window.location.href = url;
-     
-
-    localStorage.setItem('almacenamientoLocal', JSON.stringify(almacenamientoLocal));
-
-
+        
 }
 
 function mostrarNumTarjeta() {
@@ -91,7 +89,7 @@ function mostrarNumTarjeta() {
                 return "Tipo incorrecto"
                 }
             }
-
+/*
 function agregarRendicion(id) {
     fechaRendicion = document.getElementById("fechaRendicion").value;
     glosaRendicion = document.getElementById("glosaRendicion").value;
@@ -115,7 +113,9 @@ function agregarRendicion(id) {
         tipoDoc,
         monto,
     });
+    
 }
+*/
 
 // Convert the value to string for better identification
 function funcTipo(tipoRendicion) {

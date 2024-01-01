@@ -10,22 +10,23 @@
 </head>
 <body>
     <h1>Reporte de Gastos</h1>
-    <div class="reportContainer"> 
-    <table>
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>nombre</th>
-                <th>fecha</th>
-                <th>tipoRendicion</th>
-            </tr>
-        </thead>
-        <tbody id="data-output"></tbody>
-    </table>
-    
-</div>
-<div id="miDatoContainer"></div>
+    <div class="reportContainer">
+        <ol class="no-bullets">
+            <li><strong>Nombre:</strong> <span id="nombre"></span></li>
+            <li><strong>ID:</strong> <span id="id"></span></li>
+            <li><strong>Tipo de Rendición:</strong> <span id="tipoRendicion"></span></li>
+            <li><strong>Fecha:</strong> <span id="fecha"></span></li>
+        </ol>
+    </div>
 
+    <div class="reportContainer">
+        <ol class="no-bullets" id="resultado">
+        <!-- La tabla se llenará con JavaScript -->
+        </ol>
+    </div>
+      
+
+    
 </body>
 <script src="generateReport.js"></script>
 

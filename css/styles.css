@@ -1,12 +1,4 @@
 @charset "UTF-8";
-/*Partials*/
-/*
-$patagon-blue: #143d8f;
-$hover-blue: #1a50bc;
-$nav-grey: #f8f9fa;
-$text-color:#333333;
-*/
-/*Mixins*/
 
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
@@ -115,6 +107,18 @@ input[type="date"] {
   border: solid 6px rgb(52, 140, 255);
   border-radius: 20px;
   margin: auto;
+}
+
+ul.no-bullets {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ol.no-bullets {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .containter-sm {
